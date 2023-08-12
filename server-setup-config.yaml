@@ -1,0 +1,79 @@
+_specver: 2
+
+modpack:
+  name: All of Fabric 6
+  description: The latest & best of Fabric on 1.19.2.
+  
+install:
+  mcVersion: 1.19.2
+  loaderVersion: 0.14.21
+  modpackUrl: https://media.forgecdn.net/files/4664/777/All-of-Fabric-6-1.9.1.zip
+  installerUrl: https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.1/fabric-installer-0.11.1.jar
+  
+  ignoreFiles:
+    - mods/optifine*.jar
+    - resources/**
+  additionalFiles:
+    - url: https://github.com/Szum123321/textile_backup/releases/download/2.5.0/textile_backup-2.5.0-1.19.jar
+      destination: mods/textile_backup-2.5.0-1.19.jar
+  localFiles: ~
+  
+  installerArguments:
+    - "server"
+    - "-downloadMinecraft"
+    - "-snapshot"
+    - "-mcversion"
+    - "1.19.2"
+    - "-loader"
+    - "0.14.21"
+  modpackFormat: curse
+  
+  formatSpecific:
+    ignoreProject: 
+      - 472772 # Dashloader
+      
+  baseInstallPath: ~
+  
+  checkFolder: true
+  
+  installLoader: true
+  
+  installPack: true
+  
+  spongeBootstrapper: ~
+
+  connectTimeout: 90
+
+  readTimeout: 90
+
+launch:
+  # specifies the max amount of ram the server is supposed to launch with (Xmx)
+  maxRam: 14G
+  # specifies the minimal amount of ram the server is supposed to launch with (Xms)
+  minRam: 8G
+  # specifies whether the server is supposed to auto restart after crash
+  autoRestart: true
+  javaArgs:
+    - "-XX:+UnlockExperimentalVMOptions"
+    - "-XX:+UseShenandoahGC"
+    - "-XX:+AlwaysPreTouch"
+    - "-XX:+DisableExplicitGC"
+    - "-XX:+UseStringDeduplication"
+    - "-XX:-OmitStackTraceInFastThrow"
+    - "-XX:+OptimizeStringConcat"
+    - "-XX:MaxGCPauseMillis=25"
+    - "-XX:+ParallelRefProcEnabled"
+    
+  spongefix: false
+  ramDisk: false
+  checkOffline: true
+  crashLimit: 10
+  crashTimer: 60min
+  preJavaArgs: ~
+  forcedJavaPath: ~
+  startFile: ""
+  startCommand:
+    - "-jar"
+    - "fabric-server-launch.jar"
+    - "nogui"
+    
